@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./db');
+const { urlencoded } = require('body-parser');
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ connectDB();
 
 // Middleware for parsing JSON data
 app.use(express.json());
+app.use(urlencoded({ extended: true }));
 
 // Blog routes
 app.use('/blog', require('./routes/blog.route'));

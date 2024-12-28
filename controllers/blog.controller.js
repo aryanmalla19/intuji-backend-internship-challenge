@@ -1,68 +1,67 @@
-const blog = require("../models/blog.model");
+const Blog = require("../models/blog.model");
 
 const handleGetAllBlogs = async (req, res) => {
   try {
-    const blogs = await blog.find().select("-publishedAt");
+    const blogs = await Blog.find(); 
     res.json(blogs);
   } catch (error) {
-    const message = error.message;
-    res.status(500).json({ message });
+    res.status(500).json({ message: error.message });
   }
 };
 
 const handleGetBlogById = async (req, res) => {
   try {
     const blogId = req.params.id;
-    const blog = await blog.findById(blogId).select("-publishedAt");
+    const blog = await Blog.findById(blogId);
     if (!blog) {
       res.status(404).json({ message: "Blog not found" });
     } else {
       res.json(blog);
     }
   } catch (error) {
-    const message = error.message;
-    res.status(500).json({ message });
+    res.status(500).json({ message: error.message });
   }
 };
-
 
 const handleCreateBlog = async (req, res) => {
   try {
-    const blog = await blog.create(req.body);
-    res.json(blog);
+    const newBlog = await Blog.create(req.body); 
+    res.status(201).json(newBlog);
   } catch (error) {
-    const message = error.message;
-    res.status(500).json({ message });
+    res.status(500).json({ message: error.message });
   }
 };
-
 
 const handleUpdateBlog = async (req, res) => {
   try {
     const blogId = req.params.id;
-    const blog = await blog.findByIdAndUpdate(blogId, req.body, { new: true });
-    if (!blog) {
+    const updatedBlog = await Blog.findByIdAndUpdate(blogId, req.body, {
+      new: true,
+    }); // Use Blog model
+    if (!updatedBlog) {
       res.status(404).json({ message: "Blog not found" });
     } else {
-      res.json(blog);
+      res.json(updatedBlog);
     }
   } catch (error) {
-    const message = error.message;
-    res.status(500).json({ message });
+    res.status(500).json({ message: error.message });
   }
 };
-
 
 const handleDeleteBlog = async (req, res) => {
   try {
     const blogId = req.params.id;
-    await blog.findByIdAndDelete(blogId);
-    res.json({ message: "Blog deleted successfully" });
+    const deletedBlog = await Blog.findByIdAndDelete(blogId); // Use Blog model
+    if (!deletedBlog) {
+      res.status(404).json({ message: "Blog not found" });
+    } else {
+      res.json({ message: "Blog deleted successfully" });
+    }
   } catch (error) {
-    const message = error.message;
-    res.status(500).json({ message });
+    res.status(500).json({ message: error.message });
   }
 };
+
 module.exports = {
   handleGetAllBlogs,
   handleGetBlogById,

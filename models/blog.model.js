@@ -9,7 +9,6 @@ const blogSchema = new Schema({
     },
     author: {
         type: String,
-        required: true
     },
     description: {
         type: String,
@@ -18,7 +17,7 @@ const blogSchema = new Schema({
     category: {
         type: String,
         required: true,
-        enum: ['Technology', 'Health', 'Lifestyle', 'Education', 'Finance'], // Example categories
+        enum: ['Technology', 'Health', 'Lifestyle', 'Education', 'Finance','Job'], // Example categories
         message: 'Category is not valid'
     }
 }, {
