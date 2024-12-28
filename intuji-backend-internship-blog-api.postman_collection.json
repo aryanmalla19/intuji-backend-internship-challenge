@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "25ebe1aa-6e31-4c7f-9346-b4854706aec9",
+		"name": "intuji-backend-internship-blog-api",
+		"description": "The Blog API provides endpoints for managing blogs, allowing users to create, get, update, and delete blog. Each blog consists of a title, description, author(optional) and category. The API includes endpoints to fetch all blogs, fetch a specific blog by its ID, add a new blog, update an existing blog, and delete a blog.\n\n#### **Base URL**\n\n[http://locahost:4000/blog](http://locahost:4000/blog)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33320328"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4000/blog/676f923c227181e397084ecd",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/blog/676f923c227181e397084ecd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"blog",
+						"676f923c227181e397084ecd"
+					]
+				},
+				"description": "#### **Delete a Blog**\n\n- **Method**: `DELETE`\n    \n- **URL**: `/blog/:id`\n    \n- **Description**: Delete a blog using its ID.\n    \n\n**Request**:\n\n- **Path Parameter**: `id` (String, required)  \n    Example: `676f923c227181e397084ecd`\n    \n\n**Response**:\n\n- **200 OK**: Blog deleted successfully.\n    \n- **404 Not Found**: Blog not found."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/blog/676f9014c2771873064f059d?author=Aryan Malla Thakuri",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "author",
+							"value": "Aryan Malla Thakuri",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/blog/676f9014c2771873064f059d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"blog",
+						"676f9014c2771873064f059d"
+					]
+				},
+				"description": "#### **Update a Blog**\n\n- **Method**: `PUT`\n    \n- **URL**: `/blog/:id`\n    \n- **Description**: Update an existing blog.\n    \n\n**Request**:\n\n- **Path Parameter**: `id` (String, required)  \n    Example: `676f9014c2771873064f059d`\n    \n- body: { \"key\": \"author\", \"value\": \"Aryan Malla Thakuri\"}\n    \n\n**Response**:\n\n- **200 OK**: Returns the updated blog.\n    \n- **404 Not Found**: Blog not found."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/blog/676f9014c2771873064f059d",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/blog/676f9014c2771873064f059d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"blog",
+						"676f9014c2771873064f059d"
+					]
+				},
+				"description": "#### **Get Blog By ID**\n\n- **Method**: `GET`\n    \n- **URL**: `/blog/:id`\n    \n- **Description**: Fetch a specific blog using its unique ID.\n    \n\n**Request**:\n\n- **Path Parameter**: `id` (String, required)  \n    Example: `676f9014c2771873064f059d`\n    \n\n**Response**:\n\n- **200 OK**: Returns the blog details.\n    \n- **404 Not Found**: Blog not found."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/blog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/blog",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"blog"
+					]
+				},
+				"description": "#### **Get All Blogs**\n\n- **Method**: `GET`\n    \n- **URL**: `/blog`\n    \n- **Description**: Fetch all blogs from the database.\n    \n\n**Request**:\n\n- No parameters or body required.\n    \n\n**Response**:\n\n- **200 OK**: Returns a list of blogs."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/blog",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Intership Opportunity At Intuji",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Intuji description about the interhship program.",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "Job",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "Intuji HR Department",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:4000/blog",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"blog"
+					]
+				},
+				"description": "#### **Create a Blog**\n\n- **Method**: `POST`\n    \n- **URL**: `/blog`\n    \n- **Description**: Create a new blog entry.\n    \n\n**Request**:\n\n- body: { \"title\": \"Sample Blog\", \"description\": \"This is a sample blog description.\", \"category\": \"Tech\"}\n    \n\n**Response**:\n\n- **201 Created**: Returns the created blog.\n    \n- **400 Bad Request**: Validation errors or missing fields."
+			},
+			"response": []
+		}
+	]
+}
